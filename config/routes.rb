@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "application#hello"
-
+  get '/books/:id' => "books#list"
 end
