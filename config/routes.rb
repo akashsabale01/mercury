@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   root "application#hello"
   get '/books/:id' => "books#list"
+  resources :tasks, only: :index
 end
