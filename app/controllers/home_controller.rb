@@ -2,7 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    puts "index home"
     render
   end
 end
