@@ -11,10 +11,16 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchTasks = async () => {
+    // eslint-disable-next-line no-console
+    console.log("In fetchTasks");
+
     try {
       const {
         data: { tasks },
       } = await tasksApi.fetch();
+      // eslint-disable-next-line no-console
+      console.log("dfdfdfdfd ", tasks);
+
       setTasks(tasks);
       setLoading(false);
     } catch (error) {

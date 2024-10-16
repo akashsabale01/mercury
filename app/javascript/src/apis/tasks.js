@@ -2,6 +2,8 @@ import axios from "axios";
 
 const fetch = () => axios.get("/tasks");
 
-const taskApi = { fetch };
+const create = payload => axios.post("/tasks", { task: payload });
+
+const taskApi = { fetch, create };
 
 export default taskApi;
