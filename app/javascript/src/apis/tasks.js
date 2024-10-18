@@ -7,10 +7,12 @@ const show = slug => axios.get(`/tasks/${slug}`);
 const create = payload => axios.post("/tasks", { task: payload });
 
 const update = ({ slug, payload }) =>
-  axios.put(`/tasks/${slug}`, {
+  axios.patch(`/tasks/${slug}`, {
     task: payload,
   });
 
-const taskApi = { fetch, create, show, update };
+const destroy = slug => axios.delete(`/tasks/${slug}`);
+
+const taskApi = { fetch, create, show, update, destroy };
 
 export default taskApi;
