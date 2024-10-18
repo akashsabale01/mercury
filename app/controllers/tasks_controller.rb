@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  def show
+    task = Task.find_by!(slug: params[:slug])
+    render_json({ task: })
+  end
+
   def index
     tasks = Task.all
-    puts "#{tasks}"
     render status: :ok, json: { tasks: }
   end
 
