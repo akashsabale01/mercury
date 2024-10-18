@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#index"
 
-  resources :tasks, only: %i[index create show], param: :slug
+  resources :tasks, except: %i[new edit destroy], param: :slug
 
   # Note:
   # get "*path" is always placed at the end of the all routes defined in route.rb file

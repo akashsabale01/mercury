@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  before_action :load_task!, only: %i[show update]
+
   def show
-    task = Task.find_by!(slug: params[:slug])
-    render_json({ task: })
+    render_json({ task: @task })
+  end
+
+  def update
+    @task.update!(task_params)
+    render_notice(t("successfully_updated"))
   end
 
   def index
@@ -18,6 +24,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+    def load_task!
+      @task = Task.find_by!(slug: params[:slug])
+    end
 
     def task_params
       params.require(:task).permit(:title)

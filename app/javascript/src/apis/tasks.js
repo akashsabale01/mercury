@@ -2,10 +2,15 @@ import axios from "axios";
 
 const fetch = () => axios.get("/tasks");
 
-const create = payload => axios.post("/tasks", { task: payload });
-
 const show = slug => axios.get(`/tasks/${slug}`);
 
-const taskApi = { fetch, create, show };
+const create = payload => axios.post("/tasks", { task: payload });
+
+const update = ({ slug, payload }) =>
+  axios.put(`/tasks/${slug}`, {
+    task: payload,
+  });
+
+const taskApi = { fetch, create, show, update };
 
 export default taskApi;
