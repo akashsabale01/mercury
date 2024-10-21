@@ -7,7 +7,6 @@ import { Button, Container, PageLoader } from "components/commons";
 
 const Show = () => {
   const [task, setTask] = useState([]);
-  const [assignedUser, setAssignedUser] = useState({});
   const [pageLoading, setPageLoading] = useState(true);
   const { slug } = useParams();
   const history = useHistory();
@@ -21,11 +20,10 @@ const Show = () => {
   const fetchTaskDetails = async () => {
     try {
       const {
-        data: { task, assigned_user },
+        data: { task },
       } = await tasksApi.show(slug);
       // eslint-disable-next-line no-console
       setTask(task);
-      setAssignedUser(assigned_user);
       setPageLoading(false);
     } catch (error) {
       logger.error(error);
@@ -50,7 +48,7 @@ const Show = () => {
             <div className="flex items-center gap-x-6">
               <p className="text-base text-gray-700">
                 <span className="font-semibold">Assigned to: </span>
-                {assignedUser?.name}
+                {task?.assigned_user?.name}
               </p>
             </div>
           </div>

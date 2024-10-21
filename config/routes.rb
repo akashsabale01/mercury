@@ -3,12 +3,13 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  root "home#index"
+  constraints(lambda { |req| req.format == :json }) do
+    resources :tasks, except: %i[new edit], param: :slug
+    resources :users, only: :index
+  end
 
-  resources :tasks, except: %i[new edit], param: :slug
-  resources :users, only: :index
+  # Defines the root path route ("/")
+  root "home#index"
 
   # Note:
   # get "*path" is always placed at the end of the all routes defined in route.rb file
