@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :tasks, except: %i[new edit], param: :slug
+  resources :users, only: :index
 
   # Note:
   # get "*path" is always placed at the end of the all routes defined in route.rb file
