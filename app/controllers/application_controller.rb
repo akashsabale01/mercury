@@ -72,8 +72,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-    # previous code
-
     def authenticate_user_using_x_auth_token
       user_email = request.headers["X-Auth-Email"].presence
       auth_token = request.headers["X-Auth-Token"].presence
