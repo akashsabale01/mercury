@@ -17,6 +17,7 @@ const NavBar = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="w-max flex-shrink-0">
             <Link className="h-full w-auto" to="/">
+              {/* TODO: Add New Logo */}
               <GraniteLogo className="h-8 w-auto" />
             </Link>
           </div>
