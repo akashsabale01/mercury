@@ -7,7 +7,7 @@ import { resetAuthTokens } from "src/apis/axios";
 import authApi from "apis/auth";
 import { getFromLocalStorage, setToLocalStorage } from "utils/storage";
 
-import GraniteLogo from "./GraniteLogo";
+import MercuryLogo from "./MercuryLogo";
 
 const NavBar = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -55,7 +55,7 @@ const NavBar = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="w-max flex-shrink-0">
             <Link className="h-full w-auto" to="/">
-              <GraniteLogo className="h-8 w-auto" />
+              <MercuryLogo className="mt-3 h-12 w-auto" />
             </Link>
           </div>
           <div className="flex items-center gap-x-4">
