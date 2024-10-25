@@ -4,12 +4,14 @@ import { useHistory, useParams } from "react-router-dom";
 
 import tasksApi from "apis/tasks";
 import { Button, Container, PageLoader } from "components/commons";
+import { getFromLocalStorage } from "utils/storage";
 
 const Show = () => {
   const [task, setTask] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);
   const { slug } = useParams();
   const history = useHistory();
+  const userName = getFromLocalStorage("authUserName");
   // eslint-disable-next-line no-console
   console.log("task in show -> ", task);
 
@@ -58,6 +60,7 @@ const Show = () => {
           </div>
           <Button
             buttonText="Edit"
+            disabled={userName !== task.task_owner?.name}
             icon="edit-line"
             size="small"
             style="secondary"
