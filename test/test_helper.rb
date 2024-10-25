@@ -21,6 +21,8 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 class ActiveSupport::TestCase
+  include FactoryBot::Syntax::Methods
+
   # DO NOT Run tests in parallel with specified workers if Env is Coverage
   parallelize(workers: :number_of_processors) unless ENV["COVERAGE"]
 
