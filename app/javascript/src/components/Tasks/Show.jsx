@@ -6,18 +6,23 @@ import commentsApi from "apis/comments";
 import tasksApi from "apis/tasks";
 import Comments from "components/Comments";
 import { Button, Container, PageLoader } from "components/commons";
-import { getFromLocalStorage } from "utils/storage";
 
 const Show = () => {
   const [task, setTask] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);
-  const [loading, setLoading] = useState(false);
   const [newComment, setNewComment] = useState("");
+  const [loading, setLoading] = useState(false);
   const { slug } = useParams();
   const history = useHistory();
-  const userName = getFromLocalStorage("authUserName");
-  // eslint-disable-next-line no-console
-  console.log("task in show -> ", task);
+
+  const destroyTask = async () => {
+    try {
+      await tasksApi.destroy({ slug: task.slug });
+      history.push("/");
+    } catch (error) {
+      logger.error(error);
+    }
+  };
 
   const updateTask = () => {
     history.push(`/tasks/${task.slug}/edit`);
@@ -28,7 +33,6 @@ const Show = () => {
       const {
         data: { task },
       } = await tasksApi.show(slug);
-      // eslint-disable-next-line no-console
       setTask(task);
       setPageLoading(false);
     } catch (error) {
@@ -79,14 +83,22 @@ const Show = () => {
               </p>
             </div>
           </div>
-          <Button
-            buttonText="Edit"
-            disabled={userName !== task.task_owner?.name}
-            icon="edit-line"
-            size="small"
-            style="secondary"
-            onClick={updateTask}
-          />
+          <div className="flex items-center justify-end gap-x-3">
+            <Button
+              buttonText="Delete"
+              icon="delete-bin-5-line"
+              size="small"
+              style="secondary"
+              onClick={destroyTask}
+            />
+            <Button
+              buttonText="Edit"
+              icon="edit-line"
+              size="small"
+              style="secondary"
+              onClick={updateTask}
+            />
+          </div>
         </div>
         <Comments
           comments={task?.comments}

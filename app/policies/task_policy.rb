@@ -17,7 +17,7 @@ class TaskPolicy
   end
 
   def update?
-    task.task_owner_id == user.id
+    show?
   end
 
   # Every user can create a task, hence create? will always returns true.
