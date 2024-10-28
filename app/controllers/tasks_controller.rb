@@ -27,13 +27,13 @@ class TasksController < ApplicationController
   def update
     authorize @task
     @task.update!(task_params)
-    render_notice(t("successfully_deleted", entity: "Task")) unless params.key?(:quiet)
+    render_notice(t("successfully_updated", entity: "Task")) unless params.key?(:quiet)
   end
 
   def destroy
     authorize @task
     @task.destroy!
-    render_notice("Task was successfully deleted!") unless params.key?(:quiet)
+    render_notice(t("successfully_deleted", entity: "Task")) unless params.key?(:quiet)
   end
 
   private

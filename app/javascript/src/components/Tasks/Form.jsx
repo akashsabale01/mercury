@@ -28,38 +28,12 @@ const Form = ({
     userId: assignedUser.id,
   });
 
-  // eslint-disable-next-line no-console
-  console.log("oooop ", {
-    title,
-    userId: assignedUser.id,
-    userOptions,
-  });
-
   const isNotDirty = equals(initialValues.current, {
     title,
     userId: assignedUser.id,
   });
 
-  // eslint-disable-next-line no-console
-  console.log("assignedUser.id - ", assignedUser.id);
-
-  // eslint-disable-next-line no-console
-  console.log("userid - ", userId);
-
-  // eslint-disable-next-line no-console
-  console.log("initial v - ", initialValues.current);
-
-  // eslint-disable-next-line no-console
-  console.log("final v - ", {
-    title,
-    userId: assignedUser.id,
-  });
-
   function handleUserChange(e) {
-    // eslint-disable-next-line no-console
-    console.log("eppp", e);
-    // eslint-disable-next-line no-console
-
     setUserId(e.value);
   }
 

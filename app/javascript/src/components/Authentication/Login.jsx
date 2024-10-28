@@ -15,8 +15,6 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await authApi.login({ email, password });
-      // eslint-disable-next-line no-console
-      console.log("login response - ", response);
 
       setToLocalStorage({
         authToken: response.data.authentication_token,

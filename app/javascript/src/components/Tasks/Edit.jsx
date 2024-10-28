@@ -50,8 +50,6 @@ const Edit = ({ history }) => {
           task: { title, assigned_user },
         },
       } = await tasksApi.show(slug);
-      // eslint-disable-next-line no-console
-      console.log("88888", title, "9999", assigned_user);
 
       setTitle(title);
       setAssignedUser(assigned_user);
