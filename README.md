@@ -1,31 +1,24 @@
-# README
+# Mercury
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Mercury is Task Management Tool
+
+## Features
+
+- User can create task & assign that to team members.
+- Assigned User can Complete Task & Add Comments to respective task
+- After task is finished, assigned user can mark it as complete
+- User can pin any task to top
+
+## Tech Stack
+### Frontend
+  - ReactJS
+  - Tailwind CSS
+### Backend
+  - Ruby on Rails
+  - Sqlite
 
 ## Run Backend Rails Server
- - bundle exec rails server
+ `bundle exec rails server`
 
 ## Run Webpack for Frontend
- - ./bin/webpacker-dev-server
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  `./bin/webpacker-dev-server`

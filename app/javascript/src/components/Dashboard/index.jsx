@@ -92,7 +92,7 @@ const Dashboard = ({ history }) => {
   return (
     <Container>
       <div className="flex flex-col gap-y-8">
-        <PageTitle title="Todo list" />
+        <PageTitle title="Task List" />
         {!either(isNil, isEmpty)(pendingTasks) && (
           <Table
             data={pendingTasks}
