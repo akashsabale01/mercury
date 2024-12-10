@@ -9,6 +9,17 @@ class TaskPolicy
   end
 
   def show?
+    # puts "#{task.task_owner_id} #{task.assigned_user_id} #{user.id}"
+    puts "----------------------------------------"
+    puts "Policy Show Debugging Information"
+    puts "----------------------------------------"
+    puts "Assigned User ID: #{@task.assigned_user_id}" # Example: 1
+    puts "Task Owner ID: #{@task.task_owner_id}" # Example: 4
+    puts "Current User ID: #{user.id}" # Example: 1
+    puts "Is Current User the Task Owner? #{task.task_owner_id == user.id}"
+    puts "Is Current User the Assigned User? #{task.assigned_user_id == user.id}"
+    puts "----------------------------------------"
+
     task.task_owner_id == user.id || task.assigned_user_id == user.id
   end
 
@@ -17,7 +28,7 @@ class TaskPolicy
   end
 
   def update?
-    show?
+    task.task_owner_id == user.id
   end
 
   # Every user can create a task, hence create? will always returns true.
