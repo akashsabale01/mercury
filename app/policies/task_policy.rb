@@ -28,7 +28,15 @@ class TaskPolicy
   end
 
   def update?
-    task.task_owner_id == user.id
+    # task.task_owner_id == user.id
+    show?
+    # Note
+    # Here we use show? (means both task creator & assignee can update non-restricted fields task like mark task as complete) instead of allowing only task creator to update those non-restricted  fields
+    # RESTRICTED_ATTRIBUTES are defined in task model
+    # RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
+    #
+    # ensure_authorized_update_to_restricted_attrs method in tasks_controller to restrict user from
+    # updating restricted attributes
   end
 
   # Every user can create a task, hence create? will always returns true.
