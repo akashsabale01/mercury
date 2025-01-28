@@ -100,4 +100,13 @@ class UserTest < ActiveSupport::TestCase
       task_owner.destroy
     end
   end
+
+  def test_tasks_are_assigned_back_to_task_owners_before_assigned_user_is_destroyed
+    task_owner = build(:user)
+    task = create(:task, assigned_user: @user, task_owner:)
+
+    assert_equal @user.id, task.assigned_user_id
+    @user.destroy
+    assert_equal task_owner.id, task.reload.assigned_user_id
+  end
 end

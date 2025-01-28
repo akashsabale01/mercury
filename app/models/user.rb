@@ -6,7 +6,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
   MAX_EMAIL_LENGTH = 255
 
-  has_many :assigned_tasks, class_name: "Task", foreign_key: :assigned_user_id, dependent: :destroy
+  has_many :assigned_tasks, class_name: "Task", foreign_key: :assigned_user_id
   has_many :created_tasks, class_name: "Task", foreign_key: :task_owner_id, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -31,6 +31,10 @@ class User < ApplicationRecord
     end
 
     def assign_tasks_to_task_owners
+      # puts "DEBUGGING id :" + id.to_s
+      # puts "DEBUGGING assigned_tasks:" + assigned_tasks.count.to_s
+      # puts "DEBUGGING created_tasks:" + created_tasks.count.to_s
+      # debugger
       tasks_whose_owner_is_not_current_user = assigned_tasks.where.not(task_owner_id: id)
       tasks_whose_owner_is_not_current_user.find_each do |task|
         task.update(assigned_user_id: task.task_owner_id)
