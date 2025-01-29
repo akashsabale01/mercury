@@ -19,6 +19,7 @@ jobs:
       TZ: "/usr/share/zoneinfo/America/New_York"
       RAILS_ENV: "test"
       RACK_ENV: "test"
+      NODE_ENV: "test"
 
     steps:
       - checkout
